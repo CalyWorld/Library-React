@@ -1,7 +1,13 @@
 import React from "react";
 
-export const Main = () =>{
-    return(
-        <div className="m-0 p-0">This is my main</div>
-    )
-}
+export const Main = ({ bookCollection }) => {
+  return (
+    <div className="m-0 p-0">
+      {bookCollection.map((book) => (
+        <div key={book.id}>
+          <div>{book.title}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
