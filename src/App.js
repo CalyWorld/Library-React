@@ -1,6 +1,7 @@
 import './App.css';
 import React,{useState} from 'react';
 import { Header } from './components/Header/header';
+import { Main } from './components/Main/main';
 function App() {
   
   const [openButtonModal, setButtonModal] = useState(false);
@@ -14,9 +15,9 @@ function App() {
 
   const [BookCollection, setBookCollection] = useState([]);
 
-  const HandleChange = (value) => {
-    setBooks({ ...Book, [value]: value });
-    console.log(value);
+  const HandleChange = (e) => {
+    setBooks({ ...Book, [e.target.name]: e.target.value });
+    console.log(e.target.value);
   };
 
   const handleSubmit = () => {
@@ -28,10 +29,16 @@ function App() {
       number: "",
       id: Book.id + 1,
     });
+    setButtonModal(false);
+  }
+
+  const handleDelete = (book) =>{
+      setBookCollection((BookCollection)=> BookCollection.filter((eachBook)=> eachBook !== book));
   }
 
   return (<div>
-    <Header openButtonModal={openButtonModal} setButtonModal={setButtonModal} HandleChange={HandleChange}/>
+    <Header openButtonModal={openButtonModal} setButtonModal={setButtonModal} handleChange={HandleChange} handleSubmit={handleSubmit} book={Book}/>
+    <Main bookCollection={BookCollection} handleDelete={handleDelete}/>
   </div>)
 }
 
