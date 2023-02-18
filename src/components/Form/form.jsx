@@ -1,41 +1,50 @@
 import React from "react";
-export const Form = ({setButtonModal, Book, HandleChange}) => {
+export const Form = ({ setButtonModal, book, handleChange, handleSubmit }) => {
   return (
-    <div className="flex justify-center absolute top-100 left-0 right-0 ">
+    <div className="flex justify-center absolute top-0 left-0 right-0 ">
       <form className="w-96">
         <label className="flex flex-row gap-6">
           {" "}
-          Title:
-          <input placeholder="title" name="title" type="text" onChange={HandleChange} />
+          Title of Book:
+          <input
+            placeholder="Title of Book"
+            name="title"
+            value={book.title}
+            type="text"
+            onChange={handleChange}
+          />
         </label>
         <br></br>
         <label className="flex flex-row gap-6">
           {" "}
-          Description:
-          <input placeholder="description" name="description" type="text" />
+          Author:
+          <input
+            placeholder="Name of Author"
+            name="author"
+            value={book.author}
+            onChange={handleChange}
+            type="text"
+          />
         </label>
         <br></br>
         <label className="flex flex-row gap-6">
           {" "}
-          Due Date:
-          <input placeholder="date" name="date" type="date" />
-          <input placeholder="time" name="time" type="time" />
+          Number:
+          <input placeholder="Current Page Number" name="number" type="number" value={book.number} onChange={handleChange} />
         </label>
         <br></br>
-        <label className="flex flex-row gap-6">
-          {" "}
-          Priority:
-          <select name="priority" className="w-64">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-        </label>
         <br></br>
         <div className="flex justify-center gap-6">
           {" "}
-          <button type="button">Submit form</button>
-          <button type="button" onClick={()=>{setButtonModal(false)}}>Cancel</button>
+          <button type="button" onClick={handleSubmit}>Submit form</button>
+          <button
+            type="button"
+            onClick={() => {
+              setButtonModal(false);
+            }}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
