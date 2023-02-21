@@ -1,8 +1,8 @@
 import React from "react";
 export const Form = ({ setButtonModal, book, handleChange, handleSubmit }) => {
   return (
-    <div className="flex justify-center absolute top-0 left-0 right-0 ">
-      <form className="w-96">
+    <div className="flex justify-center absolute top-50 left-0 right-0">
+      <form className="w-96 border-2 border-black bg-gray-800 text-white p-2">
         <label className="flex flex-row gap-6">
           {" "}
           Title of Book:
@@ -12,6 +12,7 @@ export const Form = ({ setButtonModal, book, handleChange, handleSubmit }) => {
             value={book.title}
             type="text"
             onChange={handleChange}
+            className="text-black"
           />
         </label>
         <br></br>
@@ -24,26 +25,27 @@ export const Form = ({ setButtonModal, book, handleChange, handleSubmit }) => {
             value={book.author}
             onChange={handleChange}
             type="text"
+            className="text-black"
           />
         </label>
         <br></br>
         <label className="flex flex-row gap-6">
           {" "}
           Number:
-          <input placeholder="Current Page Number" name="number" type="number" value={book.number} onChange={handleChange} />
+          <input className="text-black" placeholder="Current Page Number" name="number" type="number" value={book.number} onChange={handleChange} />
         </label>
         <br></br>
         <br></br>
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-end gap-5">
           {" "}
-          <button type="button" onClick={handleSubmit}>Submit form</button>
+          <button type="button" onClick={handleSubmit}><i className="fa-sharp fa-solid fa-check"></i></button>
           <button
             type="button"
             onClick={() => {
               setButtonModal(false);
             }}
           >
-            Cancel
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
       </form>

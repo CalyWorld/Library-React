@@ -6,8 +6,8 @@ export const Header = ({openButtonModal, setButtonModal, handleChange, handleSub
     return(
         <header>
             <ul className="flex flex-row justify-between m-0 p-10">
-                <li>Logo</li>
-                <li><button onClick= {()=>{setButtonModal(true)}}>Button</button>{openButtonModal && (<Form setButtonModal={setButtonModal} handleChange={handleChange} handleSubmit={handleSubmit} book={book}/>)}</li>
+                <li><i className="fa-solid fa-book fa-2x"></i></li>
+                <li><button onClick= {()=>{setButtonModal(true)}}><img src="register.png" alt="form-icon"></img></button>{openButtonModal && (<Form setButtonModal={setButtonModal} handleChange={handleChange} handleSubmit={handleSubmit} book={book}/>)}</li>
             </ul>
         </header>
     )

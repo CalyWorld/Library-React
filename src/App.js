@@ -24,6 +24,8 @@ function App() {
     completed: false,
   });
 
+
+
   const [BookCollection, setBookCollection] = useState([]);
 
   useEffect(() => {
@@ -40,6 +42,7 @@ function App() {
   }, []);
 
   const HandleChange = (e) => {
+    e.preventDefault();
     setBooks({ ...Book, [e.target.name]: e.target.value });
     console.log(e.target.value);
   };
@@ -47,12 +50,12 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setBookCollection([...BookCollection, Book]);
-
+    setButtonModal(false);
     await addDoc(collection(db, "library"), {
       title: Book.title,
       author: Book.author,
       number: Book.number,
-      completed: false,
+      completed: Book.completed,
     });
 
     setBooks({
@@ -63,7 +66,6 @@ function App() {
       id: "",
       completed: false,
     });
-    setButtonModal(false);
   };
 
   const handleComplete = async (book) => {
@@ -76,6 +78,7 @@ function App() {
     await deleteDoc(doc(db, "library", book.id));
   };
 
+  //Old functionality without firestore, give id a value in Book state though
   // const handleDelete = (book) => {
   //   setBookCollection((BookCollection) =>
   //     BookCollection.filter((eachBook) => eachBook !== book)
@@ -93,7 +96,7 @@ function App() {
   // };
 
   return (
-    <div>
+    <div className="pr-10 pl-10">
       <Header
         openButtonModal={openButtonModal}
         setButtonModal={setButtonModal}
